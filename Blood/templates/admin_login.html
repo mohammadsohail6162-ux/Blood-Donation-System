@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Blood Donation System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'admin_login.css' %}">
+</head>
+<body>
+
+<div class="admin-card">
+    <div class="admin-header">
+        <div class="admin-icon">👨‍💼</div>
+        <h1 class="admin-title">Admin Login</h1>
+        <p class="admin-subtitle">Secure Admin Access</p>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}info{% endif %} alert-dismissible fade show">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Username</label>
+            <input type="text" class="form-control" name="username" placeholder="Enter admin username" required>
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Enter admin password" required>
+        </div>
+
+        <!-- ✅ BUTTON WITH BLUE GRADIENT -->
+        <button type="submit" class="btn btn-admin mb-4">Admin Login</button>
+    </form>
+
+    <div class="admin-links">
+        <a href="{% url 'home' %}">← Back to Home</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

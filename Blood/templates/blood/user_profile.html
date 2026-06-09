@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile - Blood Donation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .profile-header {
+            background: linear-gradient(135deg, lightblue, blue);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 70px;
+        }
+        .dashboard-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">🩸 Blood Donation System</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+                <span class="nav-link text-white">Welcome, {{ user.name }}!</span>
+                <a class="nav-link" href="{% url 'user_logout' %}">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="container">
+            <h1>Welcome, {{ user.name }}! 👋</h1>
+            <p class="lead">Thank you for being a life saver!</p>
+            <p>Email: {{ user.email }}</p>
+        </div>
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Donate Blood</h5>
+                        <p class="card-text">Register as a blood donor</p>
+                        <a href="{% url 'donor_register' %}" class="btn btn-danger">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Request Blood</h5>
+                        <p class="card-text">Request blood for patients</p>
+                        <a href="{% url 'blood_request' %}" class="btn btn-primary">Request Blood</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">My Profile</h5>
+                        <p class="card-text">View your information</p>
+                        <a href="#" class="btn btn-success">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

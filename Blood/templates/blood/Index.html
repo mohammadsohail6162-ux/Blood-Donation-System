@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Donation Management System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- ✅ CORRECT CSS LINK -->
+  <link rel="stylesheet" href="{% static 'index.css' %}">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar Section - UPDATED -->
+<!-- Navbar - SIMPLE VERSION -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">🩸 Blood Donation System</a>
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'donor_register' %}">Donors</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'blood_request' %}">Requests</a></li>
+                
+                <!-- ✅ SIMPLE: Username + Logout Button -->
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><span class="nav-link text-success fw-bold">👋 {{ user.name }}</span>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-danger" href="{% url 'user_logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user_login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'admin_login' %}">Admin</a></li>
+                {% endif %}
+                
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+  <!-- Banner -->
+  <div class="banner">
+    <img src="{% static 'blood/images/Blood-Donation-1.jpg' %}" class="d-block w-100" alt="Blood Donation" height="400">
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero text-center my-5">
+    <h1>Donate Blood, Save a Life ❤️</h1>
+    <p>Your small contribution can bring hope and life to someone in need.</p>
+    <!-- ✅ CORRECTED URL NAME -->
+    <a href="{% url 'donor_register' %}" class="btn btn-donate btn-primary">Become a Donor</a>
+  </section>
+
+  <!-- Why Donate -->
+  <div class="container mb-5">
+    <h2 class="section-title text-center">Why Donate Blood?</h2>
+    <p class="section-subtitle text-center">Every drop of blood you give can help save multiple lives.</p>
+    <div class="row g-4 text-center mt-4">
+      <div class="col-md-3">
+        <div class="info-card p-3 shadow-sm rounded">
+          <h4>Safe Donation</h4>
+          <p>All donations are conducted safely and hygienically under expert supervision.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="info-card p-3 shadow-sm rounded">
+          <h4>Verified Donors</h4>
+          <p>We maintain a database of verified donors, ensuring trust and reliability.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="info-card p-3 shadow-sm rounded">
+          <h4>Quick Requests</h4>
+          <p>Instantly request the required blood group and find available donors near you.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="info-card p-3 shadow-sm rounded">
+          <h4>Life Saver Badge</h4>
+          <p>Regular donors are recognized with Life Saver certificates and awards.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <footer class="footer bg-dark text-light py-5 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h4>🩸 Blood Donation System</h4>
+          <p>Powered by <strong>Mohammad Sohail</strong></p>
+        </div>
+        <div class="col-md-3">
+          <h5>Help</h5>
+          <ul class="list-unstyled">
+            <li><a href="{% url 'user_login' %}" class="text-light">Log In / Register</a></li>
+            <li><a href="#" class="text-light">Privacy Center</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>About</h5>
+          <ul class="list-unstyled">
+            <li><a href="{% url 'about' %}" class="text-light">Our Mission</a></li>
+            <li><a href="#" class="text-light">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Connect</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-light">Facebook</a></li>
+            <li><a href="#" class="text-light">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <p>© 2025 Blood Donation Management System | All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

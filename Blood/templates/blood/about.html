@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Blood Donation System</title>
+    <link rel="stylesheet" href="{% static 'blood/about.css' %}">
+</head>
+<body>
+   <nav class="navbar">
+    <a class="navbar-brand" href="{% url 'home' %}">🩸 Blood Donation System</a>
+    <ul>
+      <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'donor_register' %}">Donors</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'blood_request' %}">Requests</a></li>
+      
+      {% if user.is_authenticated %}
+                    <li class="nav-item"><span class="nav-link text-success fw-bold">👋 {{ user.name }}</span>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-danger" href="{% url 'user_logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user_login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'admin_login' %}">Admin</a></li>
+                {% endif %}
+                
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+    </ul>
+  </nav>
+  
+    <div class="container">
+        <h1>About Blood Donation System</h1>
+        <p>Our Blood Donation System is dedicated to saving lives by connecting donors with patients in need. We aim to make blood donation easy, safe, and accessible for everyone.</p>
+
+        <div class="mission">
+            <h2>Our Mission</h2>
+            <p>To ensure timely and sufficient blood supply for patients, raise awareness about the importance of blood donation, and encourage more people to become voluntary donors.</p>
+        </div>
+
+        <div class="vision">
+            <h2>Our Vision</h2>
+            <p>To build a community where blood donation is a regular habit, saving lives every day and making our society healthier and stronger.</p>
+        </div>
+
+        <h2>Meet Our Team</h2>
+        <div class="team">
+            <div class="member">
+                <img src="{% static 'blood/images/Doctor 2.jpg' %}" alt="Team Member">
+                <h3>Dr. A. Singh</h3>
+                <p>Medical Advisor</p>
+            </div>
+            <div class="member">
+                <img src="{% static 'blood/images/Doctor 1.jpg' %}" alt="Team Member">
+                <h3>Riya Sharma</h3>
+                <p>Coordinator</p>
+            </div>
+            <div class="member">
+                <img src="{% static 'blood/images/Doctor 3.jpg' %}" alt="Team Member">
+                <h3>Rahul Verma</h3>
+                <p>Volunteer Manager</p>
+            </div>
+        </div>
+
+        <div class="process">
+            <h2>Blood Donation Process</h2>
+            <div class="step">
+                <img src="{% static 'blood/images/Registration.jpg' %}" alt="Step 1">
+                <div>
+                    <h3>Step 1: Registration</h3>
+                    <p>Register online or at the donation center with your personal details and blood type.</p>
+                </div>
+            </div>
+            <div class="step">
+                <img src="{% static 'blood/images/Medical Checksup.jpg' %}" alt="Step 2">
+                <div>
+                    <h3>Step 2: Medical Checkup</h3>
+                    <p>Undergo a quick health checkup to ensure you are fit to donate blood.</p>
+                </div>
+            </div>
+            <div class="step">
+                <img src="{% static 'blood/images/Donation.jpg' %}" alt="Step 3">
+                <div>
+                    <h3>Step 3: Donation</h3>
+                    <p>Donate blood safely under medical supervision.</p>
+                </div>
+            </div>
+            <div class="step">
+                <img src="{% static 'blood/images/Refreshment.jpg' %}" alt="Step 4">
+                <div>
+                    <h3>Step 4: Refreshments</h3>
+                    <p>Enjoy some refreshments and rest for a few minutes after donation.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="how-to-donate">
+            <h2>How to Donate</h2>
+            <ul>
+                <li>Be between 18 and 65 years old.</li>
+                <li>Weigh at least 50 kg.</li>
+                <li>Be healthy and free from infections.</li>
+                <li>Eat a light meal before donation.</li>
+                <li>Drink plenty of water before and after donation.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer class="footer bg-dark text-light py-5 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h4>🩸 Blood Donation System</h4>
+          <p>Powered by <strong>Mohammad Sohail</strong></p>
+        </div>
+        <div class="col-md-3">
+          <h5>Help</h5>
+          <ul class="list-unstyled">
+            <li><a href="{% url 'user_login' %}" class="text-light">Log In / Register</a></li>
+            <li><a href="#" class="text-light">Privacy Center</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>About</h5>
+          <ul class="list-unstyled">
+            <li><a href="{% url 'about' %}" class="text-light">Our Mission</a></li>
+            <li><a href="#" class="text-light">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Connect</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-light">Facebook</a></li>
+            <li><a href="#" class="text-light">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <p>© 2025 Blood Donation Management System | All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

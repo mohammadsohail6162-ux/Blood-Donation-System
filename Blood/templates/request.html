@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Request - Blood Donation System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/request.css' %}">
+</head>
+<body>
+
+  <!-- Navbar - SIMPLE VERSION -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">🩸 Blood Donation System</a>
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'donor_register' %}">Donors</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'blood_request' %}">Requests</a></li>
+                
+                <!-- ✅ SIMPLE: Username + Logout Button -->
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="nav-link text-success fw-bold">👋 {{ user.name }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="{% url 'user_logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user_login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'admin_login' %}">Admin</a></li>
+                {% endif %}
+                
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+  <!-- Request Form -->
+  <div class="container mt-5 pt-5">
+    <h2 class="page-header">Request for Blood 🩸</h2>
+    <p class="text-center text-muted mb-4">Fill this form to request the required blood group.</p>
+
+    <div class="card p-4">
+      <form method="POST" action="{% url 'submit_request' %}">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Patient Name</label>
+            <input type="text" class="form-control" name="patient_name" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label class="form-label">Blood Group</label>
+            <select class="form-select" name="blood_group" required>
+              <option value="">Select</option>
+              <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+              <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label class="form-label">City</label>
+            <input type="text" class="form-control" name="city" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Hospital Name</label>
+            <input type="text" class="form-control" name="hospital_name" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Contact Number</label>
+            <input type="tel" class="form-control" name="contact_number" pattern="[0-9]{10}" required>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn-request">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h4>🩸 Blood Donation System</h4>
+          <p>Powered by <strong>Mohammad Sohail</strong></p>
+        </div>
+        <div class="col-md-3">
+          <h5>Help</h5>
+          <ul class="list-unstyled">
+            <li><a href="{% url 'user_login' %}" class="text-light">Log In / Register</a></li>
+            <li><a href="#" class="text-light">Privacy Center</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>About</h5>
+          <ul class="list-unstyled">
+            <li><a href="{% url 'about' %}" class="text-light">Our Mission</a></li>
+            <li><a href="#" class="text-light">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Connect</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-light">Facebook</a></li>
+            <li><a href="#" class="text-light">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <p>© 2025 Blood Donation Management System | All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+</html>

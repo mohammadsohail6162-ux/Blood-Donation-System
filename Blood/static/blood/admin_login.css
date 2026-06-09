@@ -1,0 +1,84 @@
+    body {
+        background: linear-gradient(135deg, lightblue, blue);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+    }
+    .admin-card {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        padding: 40px;
+        width: 100%;
+        max-width: 450px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+    .admin-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .admin-icon {
+        font-size: 4rem;
+        color: blue;
+        margin-bottom: 15px;
+    }
+    .admin-title {
+        color: blue;
+        font-weight: 700;
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    .admin-subtitle {
+        color: #666;
+        font-size: 1rem;
+    }
+    .form-control {
+        border-radius: 10px;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        transition: all 0.3s ease;
+    }
+    .form-control:focus {
+        border-color: blue;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    .btn-admin {
+        /* ✅ BLUE GRADIENT INSTEAD OF RED */
+        background: linear-gradient(45deg, blue, #0066cc);
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+    .btn-admin:hover {
+        /* ✅ BLUE GRADIENT ON HOVER */
+        background: linear-gradient(45deg, #0066cc, blue);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        color: white;
+    }
+    .admin-links {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .admin-links a {
+        color: blue;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .admin-links a:hover {
+        text-decoration: underline;
+    }
+    .alert {
+        border-radius: 10px;
+        border: none;
+    }

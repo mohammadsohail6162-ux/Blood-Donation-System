@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Donation Certificate</title>
+  <link rel="stylesheet" href="{% static 'certificate.css' %}">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="#">🩸 Blood Donation System</a>
+    <ul>
+      <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'donor_register' %}">Previous Page</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'blood_request' %}">Requests</a></li>
+    </ul>
+  </nav>
+
+  <!-- Certificate Content -->
+  <div class="certificate">
+    <h1>Certificate of Appreciation</h1>
+    <h2>Blood Donation</h2>
+    <p>This is to certify that</p>
+    <p class="donor-name">{{ donor_name|default:"Anonymous Donor" }}</p>
+    <p>has generously donated blood on</p>
+    <p>{{ donation_date|default:"Unknown Date" }}</p>
+
+    <div class="footer">
+      <div>
+        <p>______</p>
+        <p>Authorized Sign</p>
+      </div>
+      <div>
+        <p>______</p>
+        <p>Blood Donation Center</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
