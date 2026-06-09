@@ -1,0 +1,30 @@
+ body {
+      font-family: 'Poppins', sans-serif;
+      background-color: white;
+    }
+    .navbar { background: linear-gradient(90deg, lightblue, blue); }
+    .navbar-brand, .nav-link {
+      color: rgb(0, 0, 0) !important;
+      font-weight: 500;
+    }
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    .btn-verify {
+      background-color: lightgreen;
+      color: white;
+    }
+    .btn-verify:hover {
+      background-color: green;
+    }
+    .btn-reject {
+      background-color: red;
+      color: white;
+    }
+    .btn-reject:hover {
+      background-color: red;
+    }
+    h2 {
+      color: rgb(8, 18, 149);
+    }

@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Great+Vibes&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #66bcd9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar {
+  width: 100%;
+  background: linear-gradient(90deg, #89CFF0, #0047AB);
+  padding: 10px 40px;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-link {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.navbar .nav-link:hover {
+  color: #ffebcd;
+  text-decoration: underline;
+}
+
+.navbar .navbar-brand {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.certificate {
+  margin-top: 130px;
+  background: white;
+  width: 800px;
+  padding: 60px;
+  border: 12px double #b30000;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  position: relative;
+}
+
+.certificate h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 48px;
+  color: #b30000;
+  margin-bottom: 10px;
+}
+
+.certificate h2 {
+  color: #444;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+}
+
+.certificate p {
+  font-size: 18px;
+  color: #333;
+  margin: 8px 0;
+}
+
+.donor-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0047AB;
+  text-transform: capitalize;
+  margin: 10px 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.footer div {
+  text-align: center;
+  width: 45%;
+}
+
+.certificate::before {
+  content: "🩸";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 180px;
+  opacity: 0.05;
+  transform: translate(-50%, -50%);
+}

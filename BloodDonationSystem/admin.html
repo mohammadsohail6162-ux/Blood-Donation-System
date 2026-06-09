@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Blood Donation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">🩸 Blood Donation System</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="donor.html">Donor Registration</a></li>
+          <li class="nav-item"><a class="nav-link" href="request.html">Blood Requests</a></li>
+        </ul>
+      </div>
+    </div>
+    <button type="button" onclick="logoutAdmin()">Logout</button>
+  </nav>
+
+  <div class="container my-5 pt-5">
+
+    <div class="card mb-5 p-4">
+      <h2 class="mb-4">🩸 Blood Inventory</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Blood Group</th>
+            <th>Available Units</th>
+            <th>Total Donated Units</th>
+          </tr>
+        </thead>
+        <tbody id="inventoryTable">
+        </tbody>
+
+      </table>
+    </div>
+
+    <div class="card mb-5 p-4">
+      <h2 class="mb-4">🧑‍🤝‍🧑 Donor List</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Blood Group</th>
+            <th>City</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="donorTable">
+          <tr>
+            <td>1</td>
+            <td>Rohan Sharma</td>
+            <td>A+</td>
+            <td>Patna</td>
+            <td>rohan@example.com</td>
+            <td>
+              <button class="btn btn-verify btn-sm" onclick="verifyDonor(this, 'A+', 1)">Verify</button>
+              <button class="btn btn-reject btn-sm" onclick="rejectDonor(this)">Reject</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Priya Singh</td>
+            <td>B+</td>
+            <td>Patna</td>
+            <td>priya@example.com</td>
+            <td>
+              <button class="btn btn-verify btn-sm" onclick="verifyDonor(this, 'B+', 2)">Verify</button>
+              <button class="btn btn-reject btn-sm" onclick="rejectDonor(this)">Reject</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card p-4">
+      <h2 class="mb-4">🩸 Blood Requests</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Patient Name</th>
+            <th>Blood Group</th>
+            <th>City</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="requestTable">
+          <tr>
+            <td>1</td>
+            <td>Rahul Kumar</td>
+            <td>O+</td>
+            <td>Patna</td>
+            <td>Pending</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Anita Verma</td>
+            <td>AB+</td>
+            <td>Patna</td>
+            <td>Pending</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script>
+if(localStorage.getItem("isAdmin") !== "true"){
+  alert("Access Denied! Please login as Admin.");
+  window.location.href = "login.html";
+}
+function logoutAdmin() {
+  localStorage.removeItem("isAdmin");
+  alert("You have been logged out!")
+  window.location.href = "index.html";
+}
+
+let bloodInventory = JSON.parse(localStorage.getItem("bloodInventory")) || {
+  "A+": {available: 5, totalDonated: 5},
+  "A-": {available: 2, totalDonated: 2},
+  "B+": {available: 3, totalDonated: 3},
+  "B-": {available: 1, totalDonated: 1},
+  "AB+": {available: 2, totalDonated: 2},
+  "AB-": {available: 1, totalDonated: 1},
+  "O+": {available: 4, totalDonated: 4},
+  "O-": {available: 2, totalDonated: 2}
+};
+
+function updateInventory() {
+  let table = document.getElementById('inventoryTable');
+  table.innerHTML = '';
+  for(let group in bloodInventory){
+    let row = `<tr>
+      <td>${group}</td>
+      <td contenteditable="true" onblur="editInventory('${group}', 'available', this)">${bloodInventory[group].available}</td>
+      <td contenteditable="true" onblur="editInventory('${group}', 'totalDonated', this)">${bloodInventory[group].totalDonated}</td>
+    </tr>`;
+    table.innerHTML += row;
+  }
+}
+
+
+function editInventory(group, field, td){
+  let val = parseInt(td.innerText);
+  if(isNaN(val) || val < 0){
+    alert("Invalid number! ❌");
+    td.innerText = bloodInventory[group][field];
+  } else {
+    bloodInventory[group][field] = val;
+    localStorage.setItem("bloodInventory", JSON.stringify(bloodInventory));
+    console.log(`Updated ${group} ${field} = ${val}`);
+  }
+}
+
+
+updateInventory();
+
+    function verifyDonor(btn, group, qty=1) {
+      btn.closest('tr').style.backgroundColor = '#d4edda';
+      btn.disabled = true;
+      bloodInventory[group].available += qty;
+      bloodInventory[group].totalDonated += qty;
+      updateInventory();
+      alert("Donor Verified ✅");
+    }
+
+    function rejectDonor(btn) {
+      btn.closest('tr').style.backgroundColor = '#f8d7da';
+      btn.disabled = true;
+      alert("Donor Rejected ❌");
+    }
+     
+  if (!localStorage.getItem("userLoggedIn")) {
+    window.location.href = "user-login.html";
+  }
+
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

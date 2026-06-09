@@ -1,0 +1,48 @@
+body { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  font-family: 'Poppins', sans-serif;
+}
+.navbar {
+      background: linear-gradient(90deg, lightblue, blue);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .navbar-brand {
+      color: white !important;
+      font-weight: 700;
+    }
+
+    .navbar-nav .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin: 0 8px;
+      transition: 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #ffebcd !important;
+      text-decoration: underline;
+    }
+     .btn-custom {
+      background: linear-gradient(90deg, #5e69de, #2136d8);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px;
+      transition: 0.3s;
+    }
+.card { 
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.2); 
+  }
+  .btn-custom:hover { background: #080bc7; }
+    h3 { color: #0800ff; font-weight: 700; }

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Blood Donation System</title>
+    <style>
+      * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #6298e3;
+  color: #333;
+  padding-top: 80px; /* ✅ Added for fixed navbar */
+}
+
+.navbar {
+  width: 100%;
+  background: linear-gradient(90deg, lightblue, blue);
+  padding: 15px 40px;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-link {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.navbar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.navbar .navbar-brand {
+  color: white;
+  font-weight: 700;
+  font-size: 24px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* ✅ SPECIAL STYLES FOR USER AUTHENTICATION */
+.navbar .text-success {
+  color: #90EE90 !important; /* Light green for username */
+  font-weight: 600;
+}
+
+.navbar .text-danger {
+  color: #FFB6C1 !important; /* Light red for logout */
+  font-weight: 500;
+}
+
+.navbar .text-danger:hover {
+  color: #FF6B6B !important;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #102fac;
+}
+
+p {
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+.mission, .vision {
+  background-color: #ffe5e5;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.team {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.member {
+  text-align: center;
+  margin: 15px;
+}
+
+.member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #2818a3;
+}
+
+.member h3 {
+  margin: 10px 0 5px;
+  color: #2418ca;
+}
+
+.member p {
+  font-size: 14px;
+  color: #555;
+}
+
+.process {
+  margin-top: 50px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.step img {
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+  border-radius: 10px; /* ✅ Added border radius */
+}
+
+.how-to-donate {
+  background-color: #ffe5e5;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 40px;
+}
+
+ul {
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px; /* ✅ Adjusted for mobile */
+  }
+  
+  .navbar {
+    padding: 10px 20px; /* ✅ Reduced padding for mobile */
+  }
+  
+  .navbar ul {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .team, .step {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step img {
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+  
+  .container {
+    margin: 30px auto;
+    padding: 20px;
+  }
+}
+
+.footer {
+  background-color: rgb(54, 54, 242);
+  color: white;
+  padding-top: 40px;
+  margin-top: 80px;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  text-align: left;
+}
+
+.footer-section {
+  width: 200px;
+  margin: 10px;
+}
+
+.footer-section h2,
+.footer-section h3,
+.footer-section h4,
+.footer-section h5 {
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: #e0e0e0;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  background-color: rgb(13, 24, 122);
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.footer-bottom p {
+  margin: 5px 0;
+  color: #e0e0e0;
+}
+
+.footer-bottom a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+    </style>
+</head>
+<body>
+   <nav class="navbar">
+    <a class="navbar-brand" href="#">🩸 Blood Donation System</a>
+    <ul>
+      <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="donor.html">Donors</a></li>
+          <li class="nav-item"><a class="nav-link" href="request.html">Requests</a></li>
+          <li class="nav-item"><a class="nav-link" href="user_login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+
+    </ul>
+  </nav>
+    <div class="container">
+        <h1>About Blood Donation System</h1>
+        <p>Our Blood Donation System is dedicated to saving lives by connecting donors with patients in need. We aim to make blood donation easy, safe, and accessible for everyone.</p>
+
+        <div class="mission">
+            <h2>Our Mission</h2>
+            <p>To ensure timely and sufficient blood supply for patients, raise awareness about the importance of blood donation, and encourage more people to become voluntary donors.</p>
+        </div>
+
+        <div class="vision">
+            <h2>Our Vision</h2>
+            <p>To build a community where blood donation is a regular habit, saving lives every day and making our society healthier and stronger.</p>
+        </div>
+
+        <h2>Meet Our Team</h2>
+        <div class="team">
+            <div class="member">
+                <img src="E:\BloodDonationSystem\image\OIP (3).jpg" alt="Team Member">
+                <h3>Dr. A. Singh</h3>
+                <p>Medical Advisor</p>
+            </div>
+            <div class="member">
+                <img src="E:\BloodDonationSystem\image\OIP (2).jpg" alt="Team Member">
+                <h3>Riya Sharma</h3>
+                <p>Coordinator</p>
+            </div>
+            <div class="member">
+                <img src="E:\BloodDonationSystem\image\9766.jpg" alt="Team Member">
+                <h3>Rahul Verma</h3>
+                <p>Volunteer Manager</p>
+            </div>
+        </div>
+
+        <div class="process">
+            <h2>Blood Donation Process</h2>
+            <div class="step">
+                <img src="E:\BloodDonationSystem\image\9766.jpg" alt="Step 1">
+                <div>
+                    <h3>Step 1: Registration</h3>
+                    <p>Register online or at the donation center with your personal details and blood type.</p>
+                </div>
+            </div>
+            <div class="step">
+                <img src="E:\BloodDonationSystem\image\9766.jpg" alt="Step 2">
+                <div>
+                    <h3>Step 2: Medical Checkup</h3>
+                    <p>Undergo a quick health checkup to ensure you are fit to donate blood.</p>
+                </div>
+            </div>
+            <div class="step">
+                <img src="E:\BloodDonationSystem\image\9766.jpg" alt="Step 3">
+                <div>
+                    <h3>Step 3: Donation</h3>
+                    <p>Donate blood safely under medical supervision.</p>
+                </div>
+            </div>
+            <div class="step">
+                <img src="E:\BloodDonationSystem\image\9766.jpg" alt="Step 4">
+                <div>
+                    <h3>Step 4: Refreshments</h3>
+                    <p>Enjoy some refreshments and rest for a few minutes after donation.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="how-to-donate">
+            <h2>How to Donate</h2>
+            <ul>
+                <li>Be between 18 and 65 years old.</li>
+                <li>Weigh at least 50 kg.</li>
+                <li>Be healthy and free from infections.</li>
+                <li>Eat a light meal before donation.</li>
+                <li>Drink plenty of water before and after donation.</li>
+            </ul>
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-section brand">
+        <h2>🩸 Blood Donation System</h2>
+        <p>Powered by <strong>Mohammad Sohail</strong></p>
+        <div class="app-links">
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Help</h3>
+        <ul>
+          <li><a href="#">Log In / Register</a></li>
+          <li><a href="#">Privacy Center</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Developer / API</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>About</h3>
+        <ul>
+          <li><a href="#">Our Mission</a></li>
+          <li><a href="#">Go Premium</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Join Our Team</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Blood Donation Management System | All Rights Reserved</p>
+      <p>
+        <a href="#">Privacy Policy</a> / 
+        <a href="#">Terms of Use</a> / 
+        <a href="#">Cookie Policy</a> / 
+        <a href="#">Manage Preferences</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Donation Certificate</title>
+<link rel="stylesheet" href="certificate.css" />
+</head>
+
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="#">🩸 Blood Donation System</a>
+    <ul>
+      <li><a class="nav-link" href="index.html">Home</a></li>
+      <li><a class="nav-link" href="donor.html">Previous page</a></li>
+      <li><a class="nav-link" href="request.html">Requests</a></li>
+    </ul>
+  </nav>
+
+  <div class="certificate">
+    <h1>Certificate of Appreciation</h1>
+    <h2>Blood Donation</h2>
+    <p>This is to certify that</p>
+    <p class="donor-name">Mohammad Sohail</p>
+    <p>has generously donated blood on</p>
+    <p>16th October 2025</p>
+
+    <div class="footer">
+      <div>
+        <p>______</p>
+        <p>Authorized Sign</p>
+      </div>
+      <div>
+        <p>______</p>
+        <p>Blood Donation Center</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let name = localStorage.getItem("donorName") || "Anonymous Donor";
+    let date = localStorage.getItem("donationDate") || "Unknown Date";
+
+    document.querySelector(".donor-name").textContent = name;
+    document.querySelectorAll(".certificate p")[3].textContent = date;
+  </script>
+</body>
+</html>

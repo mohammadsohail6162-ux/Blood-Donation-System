@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Request - Blood Donation System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="request.css" />
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">🩸 Blood Donation System</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="donor.html">Donors</a></li>
+          <li class="nav-item"><a class="nav-link" href="request.html">Requests</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5 pt-5">
+    <h2 class="page-header">Request for Blood 🩸</h2>
+    <p class="text-center text-muted mb-4">Fill this form to request the required blood group.</p>
+
+    <div class="card p-4">
+      <form id="requestForm">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Patient Name</label>
+            <input type="text" class="form-control" id="patientName" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label class="form-label">Blood Group</label>
+            <select class="form-select" id="patientBlood" required>
+              <option value="">Select</option>
+              <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+              <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label class="form-label">City</label>
+            <input type="text" class="form-control" id="patientCity" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Hospital Name</label>
+            <input type="text" class="form-control" id="hospitalName" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Contact Number</label>
+            <input type="tel" class="form-control" id="contact" required pattern="[0-9]{10}">
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn-request">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Blood Donation System | Made with ❤️ by Sohail</p>
+  </footer>
+
+  <script>
+  if(localStorage.getItem("userLoggedIn") !== "true"){
+    localStorage.setItem("redirectAfterLogin", window.location.href);
+    window.location.href = "user-login.html";
+  }
+    document.getElementById('requestForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      let name = document.getElementById('patientName').value;
+      let group = document.getElementById('patientBlood').value;
+      alert(`Request submitted for ${name} (${group}) successfully.`);
+      this.reset();
+    });
+  if (!localStorage.getItem("userLoggedIn")) {
+    window.location.href = "user-login.html";
+  }
+
+  if(localStorage.getItem("userLoggedIn") !== "true"){
+    window.location.href = "user-login.html";
+  }
+
+
+  </script>
+
+</body>
+</html>

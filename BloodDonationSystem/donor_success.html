@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful - Blood Donation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="donor_success.css">
+    
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">🩸 Blood Donation System</a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="Index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="donor.html">Donors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="request.html">Requests</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Success Message -->
+    <div class="success-container">
+        <div class="success-card">
+            <div class="success-icon">✅</div>
+            <h1 class="text-success mb-3">Registration Successful!</h1>
+            <p class="lead">Thank you for registering as a blood donor. ❤️</p>
+            <p>Your generous contribution can save lives and bring hope to those in need.</p>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+            <div class="mt-4">
+                <a href="Index.html" class="btn-custom">Go to Home</a>
+                <a href="donor.html" class="btn btn-outline-primary">Register Another Donor</a>
+            </div>
+
+            <div class="mt-4">
+                <p class="text-muted">
+                    <small>
+                        A representative may contact you for verification.<br>
+                        Thank you for being a life saver!
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-section">
+                <h4>🩸 Blood Donation System</h4>
+                <p>Powered by <strong>Mohammad Sohail</strong></p>
+            </div>
+            <div class="footer-section">
+                <h5>Help</h5>
+                <ul class="list-unstyled">
+                    <li><a href="user_login.html">Log In / Register</a></li>
+                    <li><a href="#">Privacy Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>About</h5>
+                <ul class="list-unstyled">
+                    <li><a href="about.html">Our Mission</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Connect</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Blood Donation Management System | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
